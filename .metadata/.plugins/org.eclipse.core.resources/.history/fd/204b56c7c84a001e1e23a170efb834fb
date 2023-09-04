@@ -1,0 +1,16 @@
+package j05_classMethod;
+
+
+class Car {
+	
+} //Car
+
+
+public class Ex01_CarTest {
+
+	public static void main(String[] args) {
+		System.out.println("** Car class Test **");
+
+	} //main
+
+} //class

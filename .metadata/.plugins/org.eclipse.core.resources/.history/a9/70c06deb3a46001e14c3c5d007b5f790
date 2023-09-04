@@ -1,0 +1,15 @@
+package j01_basic;
+
+//** bit 연산
+//=> 쉬프트 연산 , 논리 연산
+
+public class Ex08_Operator02 {
+
+	public static void main(String[] args) {
+		int x = 10, y = 3;
+		
+		
+
+	} //main
+
+} //class

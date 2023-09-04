@@ -1,0 +1,45 @@
+package j04_array;
+
+public class Ex02_ArrayType {
+
+	public static void main(String[] args) {
+		// ** 타입별로 배열을 정의 하고 출력해본다
+		// => 묵시적 정의, 출력은 eachFor 구문으로
+		// => float, char, String
+		// => data 갯수는 5개
+		// 1) float
+		float[] engine = { 2.0f, 3.0f, 3.5f, 4.0f, 5.0f};
+		System.out.println("** (float) 엔진 배기량 **");
+		for (float e : engine) {
+			System.out.print( e + "cc ");
+		}
+		
+		// 2) char
+		char[] benz = {'A', 'B', 'C', 'E', 'S', 'G'}; 
+		System.out.println("\n** (char) Benz 세그먼트 **");
+		for (char b : benz) {
+			System.out.print( b + "-lass ");
+		}
+		
+		// 3) String
+		String[] ojo = {"오원희", "어성은", "이진기", "유희상"}; 
+		System.out.println("\n** (String) 오조 구성원 **");
+		for (String o : ojo) {
+			System.out.print( o + " / ");
+		}
+		
+		// 4) Long
+		Long[] price = {1000000L, 20000000L, 300000000L, 4000000000L}; 
+		System.out.println("\n** (Long) 한국돈 **");
+		for (Long p : price) {
+			System.out.print( p + "원 ");
+		}
+		
+		// ** 배열지원하는 Wrapper Class : Arrays
+		
+		
+		
+
+	} //main
+
+} //class

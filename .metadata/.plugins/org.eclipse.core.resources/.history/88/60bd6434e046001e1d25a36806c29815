@@ -1,0 +1,10 @@
+package j02_ifSwitch;
+
+public class Ex02_ifelseif {
+
+	public static void main(String[] args) {
+		
+
+	} //main
+
+} //class

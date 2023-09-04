@@ -1,0 +1,17 @@
+package j04_array;
+
+public class Ex02_ArrayType {
+
+	public static void main(String[] args) {
+		// ** 타입별로 배열을 정의 하고 출력해본다
+		// => 묵시적 정의, 출력은 eachFor 구문으로
+		// => float, char, String
+		// => data 갯수는 5개
+		
+		
+		
+		
+
+	} //main
+
+} //class

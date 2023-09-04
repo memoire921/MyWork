@@ -1,0 +1,14 @@
+package HomeWork;
+
+// ** static, instance 비교
+// => 교재 174 ~ 175, 188 ~ 190 (예습)
+// => 숙제: 207P 6-1
+
+public class homework_20230904 {
+
+	public static void main(String[] args) {
+		//
+
+	} //main
+
+} //class
