@@ -1,0 +1,12 @@
+package j05_classMethod;
+
+// ** static, instance 접근하기
+
+public class Ex05_staticTest {
+
+	public static void main(String[] args) {
+		//
+
+	} //main
+
+} //class
