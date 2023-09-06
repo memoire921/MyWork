@@ -20,7 +20,7 @@ public class Ex02_ArrayType {
 		System.out.println("\n** (char) Benz 세그먼트 **");
 		char[] benz = {'A', 'B', 'C', 'E', 'S', 'G'}; 
 		for (char b : benz) {
-			System.out.print( b + "-lass ");
+			System.out.print( b + "-class ");
 		}
 		
 		// 3) String
