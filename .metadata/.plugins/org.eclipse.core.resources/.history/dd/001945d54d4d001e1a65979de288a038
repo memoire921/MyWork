@@ -1,0 +1,37 @@
+package HomeWork;
+
+public class Animal {
+	String breath;
+	String leg;
+	
+	public Animal(String breath, String leg) {
+		this.breath = breath;
+		this.leg = leg;
+	}
+	
+	System.out.println("동물은 호흡한다");
+	
+	
+	
+	
+	
+	
+	
+	public leg() {
+		System.out.println("동물은 다리가 있다");
+	}
+	 
+}
+	
+
+class Mammal extends Animal {
+	
+	String cring;
+	String run;
+}
+
+class Wild extends Mammal {
+	String lion;
+	String tiger;
+}
+

@@ -1,0 +1,16 @@
+package HomeWork;
+
+public class Animal {
+	String breath;
+	String leg;
+}
+	
+class Mammal extends Animal {
+	String cring;
+	String run;
+}
+
+class Wild extends Mammal {
+	String lion;
+	String tiger;
+}

@@ -1,0 +1,14 @@
+package HomeWork;
+
+public class animal {
+	
+	
+	
+	
+	public static void main(String[] args) {
+		Breath B = new Breath();
+		
+
+	}
+
+}

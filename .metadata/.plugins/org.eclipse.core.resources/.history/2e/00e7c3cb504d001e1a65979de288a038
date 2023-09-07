@@ -1,0 +1,31 @@
+package HomeWork;
+
+public class Animal {
+	String breath;
+	String leg;
+	
+	public Animal(String breath, String leg) {
+		this.breath = breath;
+		this.leg = leg;
+	}
+	
+	public void breath() {
+		System.out.println("breath => " + breath);
+	}
+	
+	public void leg() {
+		System.out.println("leg => " + breath);
+	}
+	 
+}
+
+//class Mammal extends Animal {
+//	
+//	String cring;
+//	String run;
+//}
+//
+//class Wild extends Mammal {
+//	String lion;
+//	String tiger;
+//}
