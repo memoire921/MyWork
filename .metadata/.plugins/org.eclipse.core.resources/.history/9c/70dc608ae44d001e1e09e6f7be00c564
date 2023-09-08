@@ -1,0 +1,31 @@
+package j07_classExtends;
+
+public class Ex04_Child extends Ex04_Father {
+	
+	String name;
+	int money;
+		
+	// ** 조상 생성자
+	// => 묵시적 정의 (기술하지 않음)ㅇㅇ
+	//   -> 기본적으로 조상의 default 생성자 호출
+	//	 -> 그러므로 조상은 default 생성자는 넣어주는것이 바람직함
+	// => 명시적 정의: super(...) 정의한 생성자 호출
+	public Ex04_Child() { 
+		//super("홍길동", 0);
+		// => 자식은 default 생성자 여도 조상생성자는 선택적으로 사용가능
+		System.out.println("** Child default 생성자 **"); 
+	}
+	// => 모두 초기화 하기
+	public Ex04_Child(String name, int money) { 
+		this.name = name;
+		this.money = money;
+		System.out.println("** Child default 생성자 **"); 
+	}
+	
+	
+	public static void main(String[] args) {
+		//
+
+	}
+
+}

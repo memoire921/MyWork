@@ -1,0 +1,39 @@
+package j07_classExtends;
+
+public class Ex04_Father {
+	
+	// ** 모든 자식 인스턴스가 공유하는값은 static 으로 정의
+	static String name;
+	private int money;
+	static String country = "Korea";
+	
+	Ex04_Father() { System.out.println("** Father default 생성자 **"); }
+	public Ex04_Father(String name, int money) {
+		Ex04_Father.name = name;
+		this.money = money;
+		System.out.println("** Father 초기화 생성자 **");
+	}
+	// => 오버라이딩금지 : final
+	final public void bank(int money) {
+		this.money += money;
+		System.out.printf("** Father bank total_money = %d, today_money = %d\n"
+				, this.money, money);
+	}
+	
+	public void info() {
+		System.out.printf("** Father name = %s, money = %d \n", name, money);
+	}
+	
+	public static void main(String[] args) {
+			
+		Ex04_Father f1 = new Ex04_Father("홍길동", 10000);
+		f1.bank(5000);
+		f1.info();
+
+		Ex04_Father f2 = new Ex04_Father("김길동", 1000);
+		f2.bank(-10000);
+		f2.info();
+		
+	} //main
+
+} //class

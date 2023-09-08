@@ -1,0 +1,14 @@
+package j08_AbsInterface;
+
+// ** interface
+// => 상수, 추상메서드
+// => static, default 메서드 (구현부가 있는 메서드, Java8 부터 추가됨)
+
+public class Ex02_InterAnimal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	} //main
+
+} //class

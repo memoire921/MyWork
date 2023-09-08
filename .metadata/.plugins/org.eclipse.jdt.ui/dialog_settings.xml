@@ -28,6 +28,8 @@
 		<item key="size.y" value="535"/>
 	</section>
 	<section name="quick_assist_proposal_size">
+		<item key="size.x" value="428"/>
+		<item key="size.y" value="417"/>
 	</section>
 	<section name="RefactoringWizard.preview">
 		<item key="width" value="600"/>

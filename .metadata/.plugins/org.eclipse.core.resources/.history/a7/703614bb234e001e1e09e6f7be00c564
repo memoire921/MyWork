@@ -1,0 +1,20 @@
+package j08_AbsInterface;
+
+class MyChild1 implements Ex03_MyInterface {
+	public MyChild1() { System.out.println("** MyChild1 default 생성자 **"); 	}
+	
+	@Override
+	public String getName() { return NAME; }
+	@Override
+	public int getNum() { return NUM; }
+}
+
+
+public class Ex03_MyInterTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	} //main
+
+} //class

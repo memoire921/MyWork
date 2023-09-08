@@ -1,0 +1,39 @@
+package j08_AbsInterface;
+
+class MyChild1 implements Ex03_MyInterface {
+	public MyChild1() { System.out.println("** MyChild1 default 생성자 **"); 	}
+	
+	@Override
+	public String getName() { return NAME; }
+	@Override
+	public int getNum() { return NUM; }
+	
+	void child1() { System.out.println("** MyChild1 child1() 메서드 **"); }
+} //MyChild
+
+class MyChild2 implements Ex03_MyInterface {
+	
+	String name = "홍길동";
+	int num;
+	
+	public MyChild2() { System.out.println("** MyChild2 default 생성자 **"); 	}
+	
+	@Override
+	public String getName() { return NAME; }
+	@Override
+	public int getNum() { return NUM * num; }
+	
+	void child1() { System.out.println("** MyChild2 child2() 메서드 **"); }
+} //MyChild
+
+
+
+
+public class Ex03_MyInterTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	} //main
+
+} //class
