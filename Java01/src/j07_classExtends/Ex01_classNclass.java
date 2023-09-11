@@ -36,8 +36,6 @@ public class Ex01_classNclass {
 		System.out.println("** main car_color => " + s1.car.color);
 		System.out.println("** main mycar_color => " + Ex01_Student.mycar.color.toUpperCase());
 		
-		
-		
 		// 2) 사용(use)
 		// => Ex01_classNclass 클래스가 메서드 인자로 Ex01_Car 를 사용한 경우
 		myCar(car);

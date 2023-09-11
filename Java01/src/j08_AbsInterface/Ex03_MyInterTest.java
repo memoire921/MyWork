@@ -44,14 +44,14 @@ public class Ex03_MyInterTest {
       // => 정리
       // MyChild1, MyChild2 는 서로 무관하지만 interface 로 인해 같은 Type 으로 사용가능 
       // 다형성 적용 가능해짐 (클래스 교체 가능)
-      ch2=ch1;
+      ch2 = ch1;
       System.out.println("main ch2.getName() => "+ch2.getName());  
       System.out.println("main ch2.getNum() => "+ch2.getNum());  
 
       // ** 비교
       MyChild1 mch1 = new MyChild1();
       MyChild2 mch2 = new MyChild2();
-      //mch2=mch1; // 서로 다른 Type 이므로 오류 
+      //mch2 = mch1; // 서로 다른 Type 이므로 오류 Error
       
    } //main
 

@@ -17,5 +17,4 @@ public interface Ex03_MyInterface {
 	
 	// ** 생성자 : 허용되지 않음
 	//Ex03_MyInterface() { }
-	
 } //interface

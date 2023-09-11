@@ -3,6 +3,7 @@ package j08_AbsInterface;
 // ** interface
 // => 상수, 추상메서드
 // => static, default 메서드 (구현부가 있는 메서드, Java8 부터 추가됨)
+
 interface Animali {
 	void breath();
 	void sound();
@@ -47,24 +48,33 @@ public class Ex02_InterAnimal {
 		c1.breath();
 		c1.sound();
 		c1.special();
+		//c1.eyeColor();  -> Animali 부분만 불러올수있기 때문에 Cati 불러올수 없음. Error
 		
 		Cati c2 = new Cati();
 		c2.breath();
 		c2.sound();
 		c2.special();
+		c2.eyeColor();
 		
 		// 2) 다형성 적용
+		// => 후손은 조상의 Type 이 될 수 있다.
+		// => 반대는 성립안됨 (조상은 후손 Type 이 될 수 없음)
 		Animali animal = new Dogi();  // Cati() Eaglei() Dogi()
 		animal.breath();
 		animal.sound();
 		animal.special();
-	
+		// => 비교 Test
+		animal = c1;
+		animal = c2;   // Animali animal = new Cati(); 와 동일구문
+		//c2 = c1;     // 컴파일오류, Cati c2 = new Animali(); 와 동일구문으로 허용 안됨
+		//c2 = animal; // 컴파일오류, Cati c2 = new Animali(); 와 동일구문으로 허용 안됨
+		
 		// 3) 메서드 호출
 		animalUse(c1);
 		animalUse(c2);
 		animalUse(animal);
 		animalUse(new Eaglei());
-		
+
 		// 4) 연산자 instanceof 적용
 		Bear bear = new Bear();
 		if ( bear instanceof Animali ) {

@@ -4,12 +4,18 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="sun.tools.tree.ThisExpression"/>
     <fullyQualifiedTypeName name="j05_classMethod.Ex10_CallByRefLotto"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="j06_packageTest.Ex01_CarTest"/>
     <fullyQualifiedTypeName name="sun.jvm.hotspot.runtime.StaticBaseConstructor"/>
     <fullyQualifiedTypeName name="j07_classExtends.Ex03_AnimalTest"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="j08_AbsInterface.Animal"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Animali"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Ex03_MyInterface"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.Animal"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.Inter1"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.Inter2"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.Inter3"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.NewInter"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.PetAnimal"/>
+    <fullyQualifiedTypeName name="j08_AbsInterface.Buyer"/>
 </qualifiedTypeNameHistroy>
