@@ -18,4 +18,7 @@
     <fullyQualifiedTypeName name="j08_AbsInterface.NewInter"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.PetAnimal"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Buyer"/>
+    <fullyQualifiedTypeName name="j07_classExtends.Ex01_Car"/>
+    <fullyQualifiedTypeName name="j09_InnerClass.OuterClass"/>
+    <fullyQualifiedTypeName name="j09_InnerClass.OuterClass.Inner"/>
 </qualifiedTypeNameHistroy>

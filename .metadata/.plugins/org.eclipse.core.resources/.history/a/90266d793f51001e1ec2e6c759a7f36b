@@ -1,0 +1,41 @@
+package j09_innerClass;
+
+// ** 익명클래스 (Anonymous 클래스)
+// => 이름이 없는 클래스이며, 한번만 사용하고 버려지는 객체를
+//    사용 할 때 유용하게 쓰이는 내부클래스로서,
+//    다른 클래스를 상속받는 경우 또는 인터페이스를 구현하는 경우 이용됨  
+
+interface Flyer { void fly(); } //Flyer
+
+// 1. 일반적인 방법
+// => 구현 클래스를 작성해놓고 필요할때 사용 : 용도가 많을때, 언제든 재사용가능
+class FlyerImpl implements Flyer {
+	@Override
+	public void fly() {
+		System.out.println("** 1. 일반적인방법 => 구현클래스 작성 : 재사용가능");
+		
+	}
+} //FlyerImplfy  
+
+//=================================================================
+public class Ex05_AnonymousFly {
+
+	public static void main(String[] args) {
+		// 1. 일반적인 방법
+		Flyer f1 = new FlyerImpl();
+		f1.fly();
+		
+		// 2. 익명클래스 (Anonymous 클래스)
+		// => 구현 클래스를 필요한 위치에서 직접 작성
+		Flyer f2 = class { ~~~ } ;
+		Flyer f2 = new class { ~~~ } ; -> 이러한 개념을 문법적으로는 이래처럼 정의
+		Flyer f2 = new Flyer(); -> 인터페이스로는 생성불가능, 문법적으로 오류, 인터페이스의 생성자
+		Flyer f2 = new Flyer() { ~~~ } ;
+		
+	
+		
+		
+
+	} //main
+
+} //class

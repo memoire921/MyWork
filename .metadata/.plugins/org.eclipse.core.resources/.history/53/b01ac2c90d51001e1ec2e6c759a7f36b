@@ -1,0 +1,13 @@
+package j08_AbsInterface;
+
+
+
+
+public class Ex08_Encapsulation {
+
+	public static void main(String[] args) {
+		//
+
+	} //main
+
+} //class
