@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Math"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="sun.tools.tree.ThisExpression"/>
     <fullyQualifiedTypeName name="j05_classMethod.Ex10_CallByRefLotto"/>
     <fullyQualifiedTypeName name="j06_packageTest.Ex01_CarTest"/>
@@ -21,4 +20,9 @@
     <fullyQualifiedTypeName name="j07_classExtends.Ex01_Car"/>
     <fullyQualifiedTypeName name="j09_InnerClass.OuterClass"/>
     <fullyQualifiedTypeName name="j09_InnerClass.OuterClass.Inner"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="sun.java2d.loops.ScaledBlit"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
 </qualifiedTypeNameHistroy>
