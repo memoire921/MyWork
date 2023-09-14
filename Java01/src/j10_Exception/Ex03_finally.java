@@ -17,6 +17,7 @@ public class Ex03_finally {
 		
 		// Test 2)
 		for (int i = 0; i <= price.length; i++) {
+			if (i == 1) return; // 비교: finally 와 무관
 			try {
 				// Test 3) continue, break, return
 				// => try 블럭에 진입하면 무조건 finally 는 실행한다

@@ -31,6 +31,7 @@ public class Ex06_UNthrows {
 		String s = null;
 		int l = s.length();
 	}
+	
 	public static void classCast() throws ClassCastException {
 		Object o = new int[5];
 		String s = (String)o;  // 조상 -> 후손 (DownCasting : 가능한경우에만 명시적으로 허용)
@@ -44,8 +45,7 @@ public class Ex06_UNthrows {
 		Class<?> c = Class.forName("j10_Exception.Ex05_IOthrows");
 		System.out.println(" Find Class => " + c.getName());
 	}
-
-
+	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public static void main(String[] args) {
 		// 1) unChecked 메서드 call

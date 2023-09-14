@@ -40,7 +40,7 @@ public class Ex05_IOthrows {
 		// Checked -> 컴파일 오류 발생 : Unhandled exception type IOException
 		return new String(bf);
 	}//readString2
-	   
+	
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public static void main(String[] args) throws Exception {
 		// 1) 직접 처리
@@ -56,7 +56,6 @@ public class Ex05_IOthrows {
 //		}
 		
 		// 3) main 도 throws 가능
-		
 		System.out.println("** main readString2 => " + readString2());
 		
 	} //main
