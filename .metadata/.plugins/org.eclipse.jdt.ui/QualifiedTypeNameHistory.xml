@@ -17,12 +17,24 @@
     <fullyQualifiedTypeName name="j08_AbsInterface.NewInter"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.PetAnimal"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Buyer"/>
-    <fullyQualifiedTypeName name="j07_classExtends.Ex01_Car"/>
     <fullyQualifiedTypeName name="j09_InnerClass.OuterClass"/>
     <fullyQualifiedTypeName name="j09_InnerClass.OuterClass.Inner"/>
     <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
     <fullyQualifiedTypeName name="sun.java2d.loops.ScaledBlit"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="j10_Exception.AgeException"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="j11_APITest.Person"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="j13_generic.GenArray"/>
+    <fullyQualifiedTypeName name="j07_classExtends.Ex01_Car"/>
+    <fullyQualifiedTypeName name="j13_generic.FruitBox"/>
+    <fullyQualifiedTypeName name="j13_generic.Fruit"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
