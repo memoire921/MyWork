@@ -1,0 +1,31 @@
+package j15_enum;
+
+interface ScaleI {
+	// ** 상수정의
+	// => public static final String DO = "도";
+	// => 상수만 정의 가능하므로 생략
+	int DO = 0;
+	int RE = 0;
+	int MI = 0;
+	int FA = 0;
+	int SO = 0;
+	int RA = 0;
+	int SI = 0;
+	
+	
+	
+	
+	
+} //interface
+
+
+
+
+public class Ex01_InterfaceConst {
+
+	public static void main(String[] args) {
+		//
+
+	} //main
+
+} //class
