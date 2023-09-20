@@ -1,0 +1,12 @@
+package j17_Lamda;
+
+
+
+public class Lm03_Functional {
+
+	public static void main(String[] args) {
+		//
+
+	} //main
+
+} //class

@@ -1,0 +1,25 @@
+package j17_Lamda;
+
+import java.util.function.Function;
+
+// ** FunctionalInterface 1
+// => Function <T, R>
+
+// ** 실습
+// => String 의 길이를 return
+// => Double 입력받아 Double return
+
+public class Lm04_FunctionTest {
+
+	public static void main(String[] args) {
+		// 실습1) String 의 길이를 return
+		Function<String, Integer> z1 -> z1.toString().length();
+		
+		
+		
+		
+		// 실습2) Double 입력받아 Double return
+
+	} //main
+
+} //class
