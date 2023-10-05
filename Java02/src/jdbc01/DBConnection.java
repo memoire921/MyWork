@@ -28,7 +28,7 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-	public static Connection getConnention() {
+	public static Connection getConnection() {
 		
 	// ** Error Message
     // => 드라이버 오류 : java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver1
