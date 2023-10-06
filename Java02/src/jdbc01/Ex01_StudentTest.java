@@ -122,9 +122,13 @@ public class Ex01_StudentTest {
 			pst.setInt(2, age);
 			pst.setInt(3, jno);
 			pst.setString(4, info);
-			int count = pst.executeUpdate();
-			if (count>0) System.out.println("*** insert 성공 ***");
+			
+			//int count = pst.executeUpdate();
+			//if (count>0) System.out.println("*** insert 성공 ***");
+			//=> 비교
+			if (pst.executeUpdate() > 0) System.out.println("*** insert 성공 ***");
 			else System.out.println("*** insert 실패 ***");
+			
 		} catch (Exception e) {
 			System.out.println("** insert Exception => " + e.toString());
 		}
