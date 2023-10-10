@@ -21,10 +21,10 @@
 <%!  //Declaration : 선언부 
 	public int multiply(int a, int b) {
 		return a * b;
-		}
-		String name = "홍길동";
-		int i = 100;
-		int j = 200;
+	}
+	String name = "홍길동";
+	int i = 100;
+	int j = 200;
 %>
 => 표현식(Expression) Test<br>
 => multiply(4,5)의 결과는 <%=multiply(4,5)%><br>

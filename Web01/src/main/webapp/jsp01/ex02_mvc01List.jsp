@@ -19,14 +19,25 @@
 %>
 <table border="1" style="width:90%">
 	<tr bgcolor="lime">
-		<th>sno</th><th>name</th><th>age</th><th>jno</th><th>info</th><th>point</th><th>birthday</th>
+		<th>sno</th>
+		<th>name</th>
+		<th>age</th>
+		<th>jno</th>
+		<th>info</th>
+		<th>point</th>
+		<th>birthday</th>
 	</tr>
 <% //list 에서 출력
 	if (list != null) {
 		for (StudentDTO s:list) { %>
 		<tr>
-			<td><%=s.getSno()%></td><td><%=s.getName()%></td><td><%=s.getAge()%></td><td><%=s.getJno()%></td>
-			<td><%=s.getInfo()%></td><td><%=s.getPoint()%></td><td><%=s.getBirthday()%></td>
+			<td><%=s.getSno()%></td>
+			<td><%=s.getName()%></td>
+			<td><%=s.getAge()%></td>
+			<td><%=s.getJno()%></td>
+			<td><%=s.getInfo()%></td>
+			<td><%=s.getPoint()%></td>
+			<td><%=s.getBirthday()%></td>
 		</tr>
 <%  	} //fot
 	} else { %>

@@ -40,16 +40,12 @@ public class Ex02_MVC01List extends HttpServlet {
 			for (StudentDTO s:list) {
 				out.print(s + "<br>");
 			}
-			
-			
+				
 		} else {
 			out.print("<h2> 출력할 Data 가 없습니다 ~~ </h2>");
 		}
 			
 		out.print("<body><html>");
-		
-		
-		
 		
 	}
 
