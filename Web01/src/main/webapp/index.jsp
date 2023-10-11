@@ -12,8 +12,12 @@
 <hr>
 <img alt="" src="./images/a2.png" width="400" height="300">
 <hr>
-&nbsp;<a href="/Web01/helloS">HelloServlet</a><br>
+&nbsp;<a href="/Web01/helloS">HelloServlet</a>&nbsp;
 &nbsp;<a href="/Web01/lifecycle">ServletLF</a><br>
+&nbsp;<a href="/Web01/flow01">Flow01</a>&nbsp;
+&nbsp;<a href="/Web01/servletTestForm/flow02_TestForm.jsp">Flow02_jsp</a><br>
+&nbsp;<a href="/Web01/sessioni">SessionInfo</a>&nbsp;
+&nbsp;<a href="/Web01/01set">ScopeTest</a>&nbsp;
 
 
 </body>

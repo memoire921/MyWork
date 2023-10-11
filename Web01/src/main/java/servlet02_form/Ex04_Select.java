@@ -19,31 +19,41 @@ public class Ex04_Select extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1) 요청분석 
-		// => 한글처리, Parameter처리
+		// => 한글처리, Parameter처리 (Get 방식은 생략가능)
 		request.setCharacterEncoding("UTF-8");
 		
-		// => job: 단일값 처리
+		// => job 단일선택 select
+		String job=request.getParameter("job");
 		
-		// => interest: 배열 처리
+		// => interest 복수선택 select
+		String[] interest = request.getParameterValues("interest"); 
 		
-		String[] job =	request.getParameterValues("job");
-		String[] interest =	request.getParameterValues("interest");
-		
-		// 2) Service : add 연산
+		// 2) Service
 		// 3) View 처리 : 연산결과 출력
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print("<h2>** Select Test **</h2>");
 		
-		// => 선택여부를 확인 후 출력 
-		if ( job!=null ) {
+		// => 선택여부를 확인하고 출력
+		//	-> 선택하지 않아도 Parameter job는 존재, 그러나 Value는 없음
+		//		(select Tag 확인해 보세요 ~~)
+		if (job!=null && job.length()>0) {
+			out.print("<h2>** 당신의 직업 => "+job+"</h2>");
+		}else {
+			out.print("<h2>** 당신은 직업을 선택하지 않았습니다. **</h2>");
+		}
+		
+		out.print("<h2>** 당신의 관심분야 => </h2>");
+		// => 아무것도 선택하지 않으면 Parameter 가 없음 ( null return )
+		//    ( !=null 만 비교해도 가능함 ) 
+		if ( interest!=null && interest.length>0 ) {
 			// 선택
-			for (String s:job) {
+			for ( String s:interest ) {
 				out.print(s+"<br>");
-			} //for
-		} else {
-			out.print("<h2>=> 선택항목이 없음</h2>");
-		} //else
+			}
+		}else {
+			out.print("<h2>~~ 선택 항목이 없음 ~~</h2>");
+		}
 		
 		out.print("<br><br><h2><a href='javascript:history.go(-1)'>다시 입력하기</a></h2><br>");
 	
@@ -52,6 +62,6 @@ public class Ex04_Select extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("* Post Test **");
 		doGet(request,response);
-	} //doPost	
+	}//doPost	
 
 }//class
