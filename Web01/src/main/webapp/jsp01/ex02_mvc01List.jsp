@@ -39,7 +39,7 @@
 			<td><%=s.getPoint()%></td>
 			<td><%=s.getBirthday()%></td>
 		</tr>
-<%  	} //fot
+<%  	} //for
 	} else { %>
 		<h2> 출력할 Data 가 없습니다 ~~ </h2>
 <% 	} %>

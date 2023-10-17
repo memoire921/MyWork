@@ -47,6 +47,7 @@ public class Ex04_Login extends HttpServlet {
 			// => ~~님 : index 화면에 항상 이름이 표시 되도록
 			// => 그러므로 로그인 정보 보관 (session 에)
 			request.getSession().setAttribute("loginName", name);
+			request.getSession().setAttribute("loginID", sno);
 			System.out.println("** 로그인 성공 **");
 		} else {
 			// => 실패 : loginForm 으로 (재로그인 유도)
@@ -55,7 +56,7 @@ public class Ex04_Login extends HttpServlet {
 			// => 이러한 값들을 다른 서블릿 또는 jsp 문서와 공유하기 위한 방법이 Attribute
 			//    이 Attribute 값이 메모리에서 유지되는 시간이 4종류 -> Scope
 			// => Scope 4종: page < Request < Session < Application
-			request.setAttribute("message", "로그인 실패! 다시 하세요 ~~");
+			request.setAttribute("message", "로그인 실패! 빨리 다시 하세요 ~~");
 			
 			uri = "servletTestForm/flowEx04_LoginForm.jsp";
 		}
