@@ -16,20 +16,20 @@
 	로그인 후 이용하세요 <br>
 </c:if>
 <hr>
-<img alt="" src="./images/a2.png" width="400" height="300">
+<img alt="" src="./images/hide01.png" width="400" height="400">
 <hr>
 <c:if test="${not empty sessionScope.loginName}">
 	&nbsp;<a href="/Web02/logout">LogOut</a>&nbsp;
-	&nbsp;<a href="/Web02/detail">Myinfo</a><br>
+	&nbsp;<a href="/Web02/detail">Myinfo</a>&nbsp;
+	&nbsp;<a href="/Web02/mdetail.do">MyinfoF</a><br>
 </c:if>
 <c:if test="${empty sessionScope.loginName}">
 	&nbsp;<a href="/Web02/member/loginForm.jsp">LoginF</a>&nbsp;
-	&nbsp;<a href="/Web02/member/memverJoin.jsp">Join</a><br>
+	&nbsp;<a href="/Web02/member/memberJoin.jsp">Join</a><br>
 </c:if>
 
 &nbsp;<a href="/Web02/mlist">List</a>&nbsp;
-
-
+&nbsp;<a href="/Web02/mlist.do">ListF</a>&nbsp;
 
 </body>
 </html>

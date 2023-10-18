@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvcTest.StudentDTO;
-import mvcTest.StudentService;
-
 @WebServlet("/logout")
 public class MVC2_Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,10 +30,5 @@ public class MVC2_Logout extends HttpServlet {
 		response.sendRedirect(uri);
 		
 	} //doGet
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("** doPost 실행 **");
-		doGet(request, response);
-	} //doPost
 
 } //class

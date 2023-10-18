@@ -8,7 +8,7 @@
 <title>** Member Login Form **</title>
 </head>
 <body>
-<h2>** ** Member Login Form **</h2>
+<h2>** Member Login Form **</h2>
 <form action="/Web02/login" method="get">
 <table>
 	<tr height="40"><td><label for="id">ID</label></td>
