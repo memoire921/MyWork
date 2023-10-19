@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="sun.tools.tree.ThisExpression"/>
-    <fullyQualifiedTypeName name="j05_classMethod.Ex10_CallByRefLotto"/>
-    <fullyQualifiedTypeName name="j06_packageTest.Ex01_CarTest"/>
-    <fullyQualifiedTypeName name="sun.jvm.hotspot.runtime.StaticBaseConstructor"/>
     <fullyQualifiedTypeName name="j07_classExtends.Ex03_AnimalTest"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Animali"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Ex03_MyInterface"/>
@@ -11,7 +7,6 @@
     <fullyQualifiedTypeName name="j08_AbsInterface.Inter1"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Inter2"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Inter3"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.NewInter"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.PetAnimal"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Buyer"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="mvcTest.StudentDTO"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xpath.internal.functions.FuncSubstring"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="myDispatcher.MyController"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 </qualifiedTypeNameHistroy>
