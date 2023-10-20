@@ -21,7 +21,7 @@
 		- session : 웹 환경에서 유효한 scope. 첫요청 들어온 순간부터 해당세션이 유효한 동안 bean 객체를 유지시킴.
 	 	- 애노테이션 방식에서는 @Scope 애노테이션으로 지정.
  -->
- 	<bean id="mytv" class="iocDI01_xml.SsTVi" lazy-init="false" scope="prototype" />
-	<bean id="mytv2" class="iocDI01_xml.LgTVi" lazy-init="false" scope="singleton" />
+ 	<bean id="mytv" class="iocDI01_xml.SsTVi" lazy-init="true" scope="prototype" />
+	<bean id="lg" class="iocDI01_xml.LgTVi" lazy-init="true" scope="singleton" />
 
 </beans>

@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="j07_classExtends.Ex03_AnimalTest"/>
-    <fullyQualifiedTypeName name="j08_AbsInterface.Animali"/>
-    <fullyQualifiedTypeName name="j08_AbsInterface.Ex03_MyInterface"/>
-    <fullyQualifiedTypeName name="j08_AbsInterface.Animal"/>
-    <fullyQualifiedTypeName name="j08_AbsInterface.Inter1"/>
-    <fullyQualifiedTypeName name="j08_AbsInterface.Inter2"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.Inter3"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.NewInter"/>
     <fullyQualifiedTypeName name="j08_AbsInterface.PetAnimal"/>
@@ -60,4 +54,10 @@
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="myDispatcher.MyController"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Qualifier"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.ImportResource"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 </qualifiedTypeNameHistroy>
