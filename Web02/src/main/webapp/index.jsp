@@ -16,7 +16,7 @@
 	로그인 후 이용하세요 <br>
 </c:if>
 <hr>
-<img alt="" src="./images/hide01.png" width="400" height="400">
+<img alt="" src="./images/hide01.png" width="800" height="800">
 <hr>
 <c:if test="${not empty sessionScope.loginName}">
 	&nbsp;<a href="/Web02/logout">LogOut</a>&nbsp;

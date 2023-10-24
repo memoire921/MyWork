@@ -25,7 +25,9 @@
 	</tr>
 	<c:if test="${not empty requestScope.banana}">
 		<c:forEach var="s" items="${requestScope.banana}">
-		<tr><td>${s.id}</td><td>${s.password}</td><td>${s.name}</td><td>${s.age}</td><td>${s.jno}</td>
+		<tr><td><a href="mdetailsp?id=${s.id}">${s.id}</a></td>
+		
+			<td>${s.password}</td><td>${s.name}</td><td>${s.age}</td><td>${s.jno}</td>
 			<td>${s.info}</td><td>${s.point}</td><td>${s.birthday}</td><td>${s.rid}</td>
 			<!-- 관리자 기능 추가 -->
 			<c:if test="${sessionScope.loginID == 'admin'}">
