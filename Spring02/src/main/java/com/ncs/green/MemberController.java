@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import domain.MemberDTO;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import service.MemberService;
 
@@ -128,11 +129,20 @@ import service.MemberService;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 @Log4j
+@AllArgsConstructor // 모든값을 초기화하는 생성자
 @RequestMapping(value = "/member") // "/member" 로 시작하는 모든 요청을 처리
 @Controller
 public class MemberController {
 
-	@Autowired
+	//@Autowired  // @AllArgsConstructor 가 있기 때문에 @Autowired 의미없음.
+	// => service 인스턴스를 초기화 해주는 역할
+	//    MemberService service = new MemberService();
+	//    String name = "홍길동";
+	// => 모든값을 초기화하는 생성자를 사용하게하는 @AllArgsConstructor 를 사용하면
+	//    @Autowired 를 사용하지 않아도 됨
+	// => 차이점
+	//      -> @Autowired : 멤버들 마다 모두 적용해야함
+	//      -> @AllArgsConstructor : 클래스에 1개만 적용하면됨
 	MemberService service;
 	
 	// ** Lombok 의 Log4j Test

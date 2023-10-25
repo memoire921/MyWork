@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // 모든값을 초기화하는 생성자
 @NoArgsConstructor  // default 생성자
 @Data
-public class BoardDTO {
-	private int seq;
+public class JoDTO {
+	private int jno;
+	private String jname;
 	private String id;
-	private String title;
-	private String content;
-	private String regdate;
-	private int cnt;
+	private String project;
+	private String slogan;
+	
+	private String cname; //조장이름
+	
 }
