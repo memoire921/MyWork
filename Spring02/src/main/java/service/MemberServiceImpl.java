@@ -3,7 +3,6 @@ package service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import domain.MemberDTO;
@@ -16,31 +15,34 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDAO dao;
 	
+	// ** Jo_List 추가
+	@Override
+	public List<MemberDTO> joList(int jno) {
+		return dao.joList(jno);
+	}
+	
 	// ** selectList
 	@Override
 	public List<MemberDTO> selectList() {
 		return dao.selectList();
 	}
-	
 	// ** selectOne
 	@Override
 	public MemberDTO selectOne(MemberDTO dto) {
 		return dao.selectOne(dto);
 	}
-	
-	// ** insert 적용
+
+	// ** insert
 	@Override
 	public int insert(MemberDTO dto) {
 		return dao.insert(dto);
 	}
-	
-	// ** Update 적용
+	// ** update
 	@Override
 	public int update(MemberDTO dto) {
 		return dao.update(dto);
 	}
-	
-	// ** Delete 적용
+	// ** delete
 	@Override
 	public int delete(MemberDTO dto) {
 		return dao.delete(dto);

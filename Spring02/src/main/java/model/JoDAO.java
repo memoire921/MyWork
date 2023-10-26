@@ -18,16 +18,22 @@ import domain.JoDTO;
 
 @Repository
 public class JoDAO {
-	// ** 전역변수 정의
+	// ** JDBC 처리를 위한 전역변수정의
 	private static Connection cn = DBConnection.getConnection();
 	private static Statement st;
 	private static PreparedStatement pst;
 	private static ResultSet rs;
 	private static String sql;
 
-	// ** selectList
+	// 1. selectList
+	// => ver01 : 기본형
+	// => ver02 : 조장이름 추가
+	//            Outer Join : 조장이 없는 조도 출력 되어야 함
+	//            ( LEFT / RIGHT : 출력_자료가 있는쪽 기준 )
 	public List<JoDTO> selectList() {
-		sql = "select * from jo";
+		//sql = "select * from jo"; // -> ver01
+		sql = "select j.jno, jname, j.id, m.name, project, slogan"
+				+ " from jo j LEFT OUTER JOIN member m ON j.id = m.id "; // ver02
 		List<JoDTO> list = new ArrayList<JoDTO>();		
 		try {
 			st = cn.createStatement();
@@ -40,8 +46,9 @@ public class JoDAO {
 					dto.setJno(rs.getInt(1));
 					dto.setJname(rs.getString(2));
 					dto.setId(rs.getString(3));
-					dto.setProject(rs.getString(4));
-					dto.setSlogan(rs.getString(5));
+					dto.setCname(rs.getString(4));
+					dto.setProject(rs.getString(5));
+					dto.setSlogan(rs.getString(6));
 					list.add(dto);					
 				} while(rs.next());				
 			} else {

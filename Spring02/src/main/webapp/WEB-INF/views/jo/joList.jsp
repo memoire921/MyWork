@@ -5,60 +5,42 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>** Spring_MVC2 joList **</title>
+<title>** JoList Spring_MVC2 **</title>
 <link rel="stylesheet" type="text/css" href="/green/resources/myLib/myStyle.css">
 </head>
 <body>
-<h2>** Spring_MVC2 joList **</h2>
-
-<hr>
-<c:if test="${not empty requestScope.message}">
-	=> ${requestScope.message}<br><hr>
+<h2>** JoList Spring_MVC2 **</h2>
+<br>
+<c:if test="${not empty message}">
+	=> ${message}<br><hr>
 </c:if>
-<table border="1" style="width:90%">
-	<tr bgcolor="DeepPink">
+<hr>
+<table border="1" style="width:100%">
+	<tr bgcolor="Gold" height="30">
 		<th>Jno</th>
-		<th>Jname</th>
+		<th>JoName</th>
 		<th>ID</th>
+		<th>조장이름</th>
 		<th>Project</th>
 		<th>Slogan</th>
-		<!-- 관리자 기능 추가 -->
-		<c:if test="${sessionScope.loginID == 'admin'}">
-			<th>조 삭제</th>
-		</c:if>
 	</tr>
-	<c:if test="${not empty requestScope.banana}">
-		<c:forEach var="s" items="${requestScope.banana}">
-		<tr><td>${s.jno}</td>
-		<!-- Title 
-			=> 로그인 한 경우에만 글내용을 볼 수 있도록 Link 추가 -->
-		<td><c:if test="${not empty sessionScope.loginID}">
-				<a href="jodetail?seq=${s.jno}">${s.jname}</a>
-			</c:if>
-			<c:if test="${empty sessionScope.loginID}">
-				${s.jname}
-			</c:if>
-		</td>
-			<td>${s.id}</td>
-			<td>${s.project}</td>
-			<td>${s.slogan}</td>
-			<!-- 관리자 기능 추가 -->
-			<c:if test="${sessionScope.loginID == 'admin'}">
-				<td align="center"><a href="jdelete?id=${s.id}">조 삭제</a></td>
-			</c:if>
+	<c:if test="${not empty banana}">
+		<c:forEach var="jo" items="${banana}">
+		<tr height="30">
+			<td><a href="jdetail?jno=${jo.jno}">${jo.jno}</a></td>
+			<td>${jo.jname}</td>
+			<td>${jo.id}</td>
+			<td>${jo.cname}</td>
+			<td>${jo.project}</td>
+			<td>${jo.slogan}</td>
 		</tr>
 		</c:forEach>
 	</c:if>
-	<c:if test="${empty requestScope.banana}">
-		<tr><td colspan="5">출력할 Data가 1건도 없습니다 ~~</td>
-		</tr>
-	</c:if>
 </table>
 <hr>
-
-<c:if test="${not empty sessionScope.loginID}">
-		&nbsp;<a href="joInsert">새조 등록</a>&nbsp;
-</c:if>
+<hr>
+&nbsp;<a href="joInsert">조등록</a>&nbsp;
+&nbsp;<a href="javascript:history.go(-1)">이전으로</a>&nbsp;
 &nbsp;<a href="/green/home">Home</a>&nbsp;
 </body>
 </html>

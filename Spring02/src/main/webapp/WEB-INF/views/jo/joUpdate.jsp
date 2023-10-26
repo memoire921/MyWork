@@ -14,15 +14,17 @@
 <form action="jupdate" method="Post">
 <table>
 	<c:if test="${not empty requestScope.apple}">
-		<tr height="40"><th bgcolor="Chocolate">Jno</th>
-		<td><input type="text" name="jno" value="${requestScope.apple.jno}" size="20" readonly></td></tr>
-		<tr height="40"><th bgcolor="Chocolate">Jname</th>
-		<td><input type="text" name="jname" value="${requestScope.apple.jname}" size="20" readonly></td></tr>
-		<tr height="40"><th bgcolor="Chocolate">I D</th>
+		<tr height="40"><th bgcolor="Violet">Jno</th>
+			<td><input type="text" name="jno" value="${requestScope.apple.jno}" size="20" readonly></td></tr>
+		<tr height="40"><th bgcolor="Violet">Jname</th>
+			<td><input type="text" name="jname" value="${requestScope.apple.jname}" size="20" readonly></td></tr>
+		<tr height="40"><th bgcolor="Violet">I D</th>
 			<td><input type="text" name="id" value="${requestScope.apple.id}" size="20" readonly></td></tr>
-		<tr height="40"><th bgcolor="Chocolate">Project</th>
+		<tr height="40"><th bgcolor="Violet">Project</th>
+			<td><input type="text" name="cname" value="${requestScope.apple.cname}" size="20"></td></tr>
+		<tr height="40"><th bgcolor="Violet">Cname</th>
 			<td><input type="text" name="project" value="${requestScope.apple.project}" size="50"></td></tr>
-		<tr height="40"><th bgcolor="Chocolate">Slogan</th>
+		<tr height="40"><th bgcolor="Violet">Slogan</th>
 			<td><input type="text" name="slogan" value="${requestScope.apple.slogan}" size="50"></td></tr>
 		<tr height="40"><th></th>
 			<td><input type="submit" value="수정">&nbsp;&nbsp;&nbsp;

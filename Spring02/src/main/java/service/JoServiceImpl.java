@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import domain.JoDTO;
 import model.JoDAO;
 
+//** interface 자동완성 
+//=> Alt + Shift + T  
+//=> 또는 마우스우클릭 PopUp Menu 의  Refactor - Extract Interface...
+
 @Service
 public class JoServiceImpl implements JoService {
 	// ** 전역변수 정의

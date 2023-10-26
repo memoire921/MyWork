@@ -5,27 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>** Spring_MVC2 Board_Insert **</title>
+<title>** Spring_MVC2 Reply_Insert **</title>
 <link rel="stylesheet" type="text/css" href="/green/resources/myLib/myStyle.css">
 </head>
 <body>
-<h2>** Spring_MVC2 jo_Insert **</h2>
+<h2>** Spring_MVC2 Reply_Insert **</h2>
 
-<form action="jinsert" method="Post">
+<form action="rinsert" method="Post">
 <table>
-	<tr height="40"><th bgcolor="Violet">Jno</th>
-		<td><input type="text" name="jno" size="20"></td></tr>
-	<tr height="40"><th bgcolor="Violet">Jname</th>
-		<td><input type="text" name="jname" size="20"></td></tr>
 	<tr height="40"><th bgcolor="Violet">I D</th>
 		<td><input type="text" name="id" value="${sessionScope.loginID}" readonly size="20"></td></tr>
-	<tr height="40"><th bgcolor="Violet">Cname</th>
-		<td><input type="text" name="cname">
-	<tr height="40"><th bgcolor="Violet">Project</th>
-		<td><input type="text" name="project">
-	<tr height="40"><th bgcolor="Violet">Slogan</th>
-		<td><input type="text" name="slogan" size="50">
+	<tr height="40"><th bgcolor="Violet">Title</th>
+		<td><input type="text" name="title" size="50"></td></tr>
+	<tr height="40"><th bgcolor="Violet">Content</th>
+		<td><textarea rows="5" cols="50" name="content"></textarea>
 		</td></tr>
+	<!-- 부모글의 root, step, indent 값이 있어야 댓글을 등록할 수 있음 
+		=> 그러므로 이 값들을 hidden 으로 보관했다가 서버로 전달 되도록 함 -->
+	<tr height="40"><td></td>
+		<td><input type="hidden" name="root" value="${boardDTO.root}">
+			<input type="hidden" name="step" value="${boardDTO.step}"> 
+			<input type="hidden" name="indent" value="${boardDTO.indent}"> 
+		</td>
+	</tr>
+		
 	<tr height="40"><th></th>
 		<td><input type="submit" value="등록">&nbsp;&nbsp;&nbsp;
 			<input type="reset" value="취소">
