@@ -13,11 +13,11 @@
 
 <form action="rinsert" method="Post">
 <table>
-	<tr height="40"><th bgcolor="Violet">I D</th>
+	<tr height="40"><th bgcolor="lime">I D</th>
 		<td><input type="text" name="id" value="${sessionScope.loginID}" readonly size="20"></td></tr>
-	<tr height="40"><th bgcolor="Violet">Title</th>
+	<tr height="40"><th bgcolor="lime">Title</th>
 		<td><input type="text" name="title" size="50"></td></tr>
-	<tr height="40"><th bgcolor="Violet">Content</th>
+	<tr height="40"><th bgcolor="lime">Content</th>
 		<td><textarea rows="5" cols="50" name="content"></textarea>
 		</td></tr>
 	<!-- 부모글의 root, step, indent 값이 있어야 댓글을 등록할 수 있음 

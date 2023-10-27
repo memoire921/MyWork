@@ -100,7 +100,7 @@ public class BoardDAO {
 //				+ " (select * from (select IFNULL(max(seq), 0) + 1 from board) as temp)"  // seq값 계산
 //				+ ", ?, ?, ?)";
 		// => 댓글입력 후
-		sql = "insert into board(seq, id, title, content, root) values("
+		sql = "insert into board(seq, id, title, content, root) values ("
 				+ " (select * from (select IFNULL(max(seq), 0) + 1 from board) as temp)"  // seq값 계산
 				+ ", ?, ?, ?, "
 				+ "(select * from (select IFNULL(max(seq), 0) + 1 from board) as temp))"; 
