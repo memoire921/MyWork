@@ -30,6 +30,8 @@
 		<td>${requestScope.apple.birthday}</td></tr>
 	<tr height="40"><th bgcolor="Thistle">추천인</th>
 		<td>${requestScope.apple.rid}</td></tr>
+	<tr height="40"><th bgcolor="Thistle">Image</th>
+		<td><img alt="MyImage" src="/green/${requestScope.apple.uploadfile}" width="100" height="120"></td></tr>
 </c:if>
 <c:if test="${empty requestScope.apple}">
 	<tr><td colspan="2">~~ 출력할 자료가 없습니다 ~~</td></tr>
@@ -37,6 +39,6 @@
 </table>
 <hr>
 &nbsp;<a href="javascript:history.go(-1)">이전으로</a>&nbsp;
-&nbsp;<a href="home">Home</a>&nbsp;
+&nbsp;<a href="/green/home">Home</a>&nbsp;
 </body>
 </html>
