@@ -37,11 +37,13 @@ public class MemberServiceImpl implements MemberService {
 	public int insert(MemberDTO dto) {
 		return mapper.insert(dto);
 	}
+	
 	// ** update
 	@Override
 	public int update(MemberDTO dto) {
 		return mapper.update(dto);
 	}
+
 	// ** delete
 	@Override
 	public int delete(MemberDTO dto) {

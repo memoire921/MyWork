@@ -4,16 +4,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.http.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -146,9 +149,46 @@ public class MemberController {
 	// => 모든값을 초기화하는 생성자를 사용하게하는 @AllArgsConstructor 를 사용하면
 	//    @Autowired 를 사용하지 않아도 됨
 	// => 차이점
-	//      -> @Autowired : 멤버들 마다 모두 적용해야함
+	//      -> @Autowired : 멤버들 마다 모두 적용해야함 ( 1:1 )
 	//      -> @AllArgsConstructor : 클래스에 1개만 적용하면됨
 	MemberService service;
+	PasswordEncoder passwordEncoder;
+	
+	
+	
+	// ** File Download **********************************************
+	// => 전달받은 path 와 파일명으로 File 객체를 만들어 찾아서 response에 담아주면,
+	//    클라이언트의 웹브라우져로 전달됨.
+	
+	@GetMapping("/download")
+	public String download(HttpServletRequest request, Model model,
+					@RequestParam("dnfile") String dnfile) {
+					// => 동일표현 String dnfile = request.getParameter("dnfile");
+		// 1) 파일 & path 확인
+		String realPath = request.getRealPath("/"); //deprecated Method
+		String fileName = dnfile.substring(dnfile.lastIndexOf("/")+1);
+		// => dnfile: resources/uploadImages/robot.png
+	      
+		// => realpath 확인, 개발중인지, 배포했는지 에 따라 결정
+		// => 해당화일 File 찾기위함
+		if ( realPath.contains(".eclipse.") )  // 개발중 (배포전: eclipse 개발환경) 
+			realPath="C:\\Users\\leejk\\Desktop\\leejk\\MTest\\MyWork\\Spring02\\src\\main\\webapp\\resources\\uploadImages\\";
+		else realPath+="resources\\uploadImages\\";
+		realPath+=fileName;  // ~~~~~\\resources\\uploadImages\\robot.png -> path 완성
+		
+		// 2) 해당 파일 (path+fileName) File Type 으로 객체화
+		File file = new File(realPath);
+		model.addAttribute("downloadFile", file);
+		
+		// 3) response 처리 (response의 body 에 담아줌)
+		// => Java File 객체 -> File(내용) 정보를 response 에 전달
+		// => 이것을 처리할 View 해결사가 필요함 (DownloadView)
+		//    이 해결사와 return 값의 연결은 설정파일(servlet~~~.xml) 에서  
+		return "downloadView";
+		// => 주의: ~~/downloadView.jsp 문서가 존재하면 이것이 실행될 수 있으므로 주의 !!!
+	}
+	
+	
 	
 	// ** Lombok 의 Log4j Test
 	@GetMapping(value = "/log4jtest")
@@ -223,7 +263,11 @@ public class MemberController {
 		// => 성공: id, name 은 session 에 보관, home 으로 
 		// => 실패: 재로그인 유도
 		dto = service.selectOne(dto);
-		if ( dto != null && dto.getPassword().equals(password)) {
+		
+		//if ( dto != null && dto.getPassword().equals(password)) {
+		// *** PasswordEncoder 적용
+		if ( dto != null && 
+				passwordEncoder.matches(password, dto.getPassword()) ) {	
 			session.setAttribute("loginID", dto.getId());
 			session.setAttribute("loginName", dto.getName());
 		} else {
@@ -276,6 +320,9 @@ public class MemberController {
         // => 성공: 로그인유도 (loginForm 으로, member/loginForm.jsp)
         // => 실패: 재가입유도 (joinForm 으로, member/memberJoin.jsp)
 		String uri = "member/loginForm";
+		
+		// *** PasswordEncoder 적용
+		dto.setPassword( passwordEncoder.encode(dto.getPassword()) );
 		
 		// ** MultipartFile ***********************
 		// => 전달된 UploadFile 정보 전달
@@ -380,6 +427,19 @@ public class MemberController {
 		return uri;
 	} //Join_Post
 	
+	// ** pUpdateForm
+	@GetMapping(value = "pUpdateForm")
+	public void pUpdateForm() {
+		// viewName 생략 -> 요청명이 viewName 이 됨
+	}
+	@PostMapping("pUpdateForm")
+	public String pUpdateForm(HttpServletRequest request, Model model, MemberDTO dto) {
+		
+		
+		
+		return "";
+	}
+	
 	// ** Member Update
 	// => 요청: home 에서 내정보수정 -> 내정보수정Form (memberUpdate.jsp) 출력
 	// => 수정후 submit -> 수정 Service 
@@ -387,7 +447,8 @@ public class MemberController {
 	//      -> 실패: 재시도 유도 (memberUpdate.jsp)
 	//@RequestMapping(value = "/mupdate", method = RequestMethod.POST)
 	@PostMapping(value = "/mupdate")
-	public String memberUpdate(HttpServletRequest request, MemberDTO dto, Model model) throws IOException {
+	public String memberUpdate(HttpServletRequest request, 
+								MemberDTO dto, Model model) throws IOException {
 		
 		// => 처리결과에 따른 화면 출력을 위해서 dto 의 값을 Attribute 에 보관
 		model.addAttribute("apple", dto);

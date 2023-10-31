@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>** Spring_MVC2 MemberUpdate **</title>
-<link rel="stylesheet" type="text/css" href="/green/resources/myLib/myStyle.css">
-<script src="/green/resources/myLib/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Spring02/resources/myLib/myStyle.css">
+<script src="/Spring02/resources/myLib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <h2>** Spring_MVC2 MemberUpdate **</h2>
@@ -58,7 +58,7 @@
 				-> 본래 Image 를 사용 -> uploadfile 값이 필요함
 	-->	
 	<tr height="40"><th bgcolor="Orange">Image</th>
-		<td><img alt="MyImage" src="/green/${requestScope.apple.uploadfile}" 
+		<td><img alt="MyImage" src="/Spring02/${requestScope.apple.uploadfile}" 
 							   width="80" height="100" class="select_img" > 
 			<input type="hidden" name="uploadfile" value="${requestScope.apple.uploadfile}"><br>		
 			<input type="file" name="uploadfilef" id="uploadfilef" size="20">
@@ -95,6 +95,6 @@
 </c:if>
 <hr>
 &nbsp;<a href="javascript:history.go(-1)">이전으로</a>&nbsp;
-&nbsp;<a href="/green/home">Home</a>&nbsp;
+&nbsp;<a href="/Spring02/home">Home</a>&nbsp;
 </body>
 </html>

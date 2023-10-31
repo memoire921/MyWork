@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>** Spring_MVC2 BoardList **</title>
-<link rel="stylesheet" type="text/css" href="/green/resources/myLib/myStyle.css">
+<link rel="stylesheet" type="text/css" href="/Spring02/resources/myLib/myStyle.css">
 </head>
 <body>
 <h2>** Spring_MVC2 BoardList **</h2>
@@ -60,6 +60,6 @@
 <c:if test="${not empty sessionScope.loginID}">
 		&nbsp;<a href="boardInsert">새글등록</a>&nbsp;
 </c:if>
-&nbsp;<a href="/green/home">Home</a>&nbsp;
+&nbsp;<a href="/Spring02/home">Home</a>&nbsp;
 </body>
 </html>

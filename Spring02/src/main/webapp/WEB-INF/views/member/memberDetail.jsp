@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>** Web_MVC2 Member Detail **</title>
-<link rel="stylesheet" type="text/css" href="/green/resources/myLib/myStyle.css">
+<link rel="stylesheet" type="text/css" href="/Spring02/resources/myLib/myStyle.css">
 </head>
 <body>
 <h2>** Web_MVC2 Member Detail **</h2>
@@ -31,7 +31,7 @@
 	<tr height="40"><th bgcolor="Thistle">추천인</th>
 		<td>${requestScope.apple.rid}</td></tr>
 	<tr height="40"><th bgcolor="Thistle">Image</th>
-		<td><img alt="MyImage" src="/green/${requestScope.apple.uploadfile}" width="100" height="120"></td></tr>
+		<td><img alt="MyImage" src="/Spring02/${requestScope.apple.uploadfile}" width="100" height="120"></td></tr>
 </c:if>
 <c:if test="${empty requestScope.apple}">
 	<tr><td colspan="2">~~ 출력할 자료가 없습니다 ~~</td></tr>
@@ -39,6 +39,6 @@
 </table>
 <hr>
 &nbsp;<a href="javascript:history.go(-1)">이전으로</a>&nbsp;
-&nbsp;<a href="/green/home">Home</a>&nbsp;
+&nbsp;<a href="/Spring02/home">Home</a>&nbsp;
 </body>
 </html>

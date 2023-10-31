@@ -20,7 +20,7 @@ public interface MemberService {
 
 	// ** update
 	int update(MemberDTO dto);
-
+	
 	// ** delete
 	int delete(MemberDTO dto);
 
