@@ -154,7 +154,65 @@ public class MemberController {
 	MemberService service;
 	PasswordEncoder passwordEncoder;
 	
+	//@Autowired
+	//OtherService1 service1;
+	//@Autowired
+	//OtherService2 service2;
 	
+	// ** ID 중복확인
+	@GetMapping("/idDupCheck")
+	public String idDupCheck(MemberDTO dto, Model model) {
+		// 1) newID 확인
+		if ( service.selectOne(dto) != null ) {
+			// => 존재 : 사용불가
+			model.addAttribute("idUse", "F");
+		} else {
+			// => 없으면 : 사용가능
+			model.addAttribute("idUse", "T");
+		}
+		return "member/idDupCheck";
+	} //idDupCheck
+	
+	// ** PasswordUpdate
+	// => passwordUpdate_Form 출력
+	@GetMapping(value="/pUpdateForm")
+	public void pUpdateForm() {
+		// viewName 생략
+	} //pUpdateForm
+		
+	// => password 만 수정
+	@PostMapping(value="/passwordUpdate")
+	public String passwordUpdate(HttpServletRequest request, Model model, MemberDTO dto) {
+		// ** password Update
+		// => 로그인 확인: session 에서 id get 
+		// => passwordEncode (암호화) 처리 	
+		// => Service
+		// 	-> 성공: 재로그인 유도 -> session 무효화, member/loginForm 으로 
+		//	-> 실패: 재수정 유도 -> pUpdateForm 
+		
+		String id =(String)request.getSession().getAttribute("loginID");
+		// ** id 가 존재하지 않는 경우 -> 로그인유도, 메서드종료
+		if (id==null) {
+			model.addAttribute("message", "~~ 로그인 정보가 없으니 로그인 후 하세요 ~~");
+			return "member/loginForm";
+		}
+		// ** id 가 존재하는 경우 수정
+		dto.setId(id);
+		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+			
+		String uri="member/loginForm";
+		if ( service.update(dto)>0 ) {
+			// password 수정성공, session 무효화, loginForm 으로
+			request.getSession().invalidate(); 
+			model.addAttribute("message", "~~ password 수정 성공, 재로그인 하세요 ~~");
+		}else {
+			// password 수정실패
+			model.addAttribute("message", "~~ password 수정 실패 , 다시 하세요 ~~");
+			uri="member/pUpdateForm";
+		}
+		// 3) View 처리
+		return uri;
+	} //passwordUpdate
 	
 	// ** File Download **********************************************
 	// => 전달받은 path 와 파일명으로 File 객체를 만들어 찾아서 response에 담아주면,
@@ -427,19 +485,6 @@ public class MemberController {
 		return uri;
 	} //Join_Post
 	
-	// ** pUpdateForm
-	@GetMapping(value = "pUpdateForm")
-	public void pUpdateForm() {
-		// viewName 생략 -> 요청명이 viewName 이 됨
-	}
-	@PostMapping("pUpdateForm")
-	public String pUpdateForm(HttpServletRequest request, Model model, MemberDTO dto) {
-		
-		
-		
-		return "";
-	}
-	
 	// ** Member Update
 	// => 요청: home 에서 내정보수정 -> 내정보수정Form (memberUpdate.jsp) 출력
 	// => 수정후 submit -> 수정 Service 
@@ -453,6 +498,10 @@ public class MemberController {
 		// => 처리결과에 따른 화면 출력을 위해서 dto 의 값을 Attribute 에 보관
 		model.addAttribute("apple", dto);
 		String uri = "member/memberDetail";
+		
+		// ** password 수정과 나머지 컬럼 수정을 분리
+		// => mapper 에서 이것을 구분 할 수 있도록 password 값을 null 로
+		dto.setPassword(null);
 		
 		// *** ImageUpload 처리 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		// => newImage 선택한경우: MultipartFile 처리

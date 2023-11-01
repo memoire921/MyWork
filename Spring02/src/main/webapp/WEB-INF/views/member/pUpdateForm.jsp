@@ -5,42 +5,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>** Spring_MVC2 Password Update **</title>
+<title>** Spring_Mybatis Password Update **</title>
 <link rel="stylesheet" type="text/css" href="/Spring02/resources/myLib/myStyle.css">
-<script src="/Spring02/resources/myLib/jquery-3.2.1.min.js"></script>
+<script>
+	function pCheck() {
+		let pvalue = document.getElementById('password').value;
+		
+		if (pvalue.length < 4 ) {
+			alert('~~ Password 를 4자 이상 입력 하세요 ~~');
+			return false;
+		} else if ( pvalue != document.getElementById('password2').value) {
+			alert('~~ Password 가 일치하지 않습니다 ~~');
+			return false;
+		} else return true;
+	} //pCheck
+	
+</script>
 </head>
 <body>
-<h2>** Spring_MVC2 Password Update **</h2>
-
-<form action="pUpdateForm" method="Post" enctype="multipart/form-data">
+<h2>** Spring_Mybatis Password Update **</h2>
+<div align="center">
+<br>
+<b>=> 새로운 Password 를 입력 하세요 ~~</b><br><br>
+<form action="passwordUpdate" method="Post">
 <table>
-		<!-- id: 화면출력, 서버로 전송, 수정은불가(즉, input Tag 의 입력 막기) 
-				 -> readonly: 서버로 전송 (권장)
-				 -> disabled: 서버로 전송되지않음
-		-->
+	<tr height="40">
+		<td bgcolor="Khaki"><label for="password">Password</label></td>
+		<td><input type="password" id="password" name="password"></td>
+	</tr>	
 		
-		<!-- password 수정: 기본적으로 복호화불가능한 방식으로 암호화되어있기 때문에 별도로 처리
-						-> 암호수정: 별도의 수정화면에서 재입력후 교체됨
-					  	-> 암호찾기: 본인 재인증 후, 새암호를 발송 -> 새암호로 본인이 로그인후 수정  
-		-->
-		
-	<tr height="40"><th bgcolor="Khaki">Password</th>
-		<td><input type="password" name="password" value=${requestScope.apple.password} size="20"></td></tr>	
-		
-	<tr height="40"><th bgcolor="Khaki">재 확 인</th>
-		<td><input type="password" name="password" value=${requestScope.apple.password} size="20"></td></tr>
+	<tr height="40">
+		<td bgcolor="Khaki"><label for="password2">재 확 인</label></td>
+		<td><input type="password" id="password2" placeholder="반드시 입력하세요" onblur="pCheck"></td></tr>
 
 	<tr height="40"><th></th>
-		<td><input type="submit" value="수정">&nbsp;&nbsp;&nbsp;
+		<td><input type="submit" value="수정" onclick="return pCheck()">&nbsp;&nbsp;&nbsp;
 			<input type="reset" value="취소">		
 		</td>
 	</tr>
-  <c:if test="${empty requestScope.apple}">
-  	<tr height="40"><td>~~ 수정할 자료가 존재하지 않습니다 ~~</td>
-  	</tr>
-  </c:if>				
 </table>
 </form>
+</div>
 <hr>
 <c:if test="${not empty requestScope.message}">
 => ${requestScope.message}
