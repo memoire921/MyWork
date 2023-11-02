@@ -56,7 +56,7 @@
 	</c:if>
 </table>
 <hr>
-
+<!--  로그인 한 경우에만 새글등록 가능  -->
 <c:if test="${not empty sessionScope.loginID}">
 		&nbsp;<a href="boardInsert">새글등록</a>&nbsp;
 </c:if>

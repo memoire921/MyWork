@@ -24,8 +24,8 @@ import lombok.ToString;
 public class PageMaker {
 	
 	private int totalRowsCount; //전체 Row 갯수: DB에서 읽어온다
-	private int spageNo; //계산
-	private int epageNo; //계산
+	private int spageNo; //계산    (startpageNo)
+	private int epageNo; //계산    (endpageNo)
 	// ※ 주의 필드명이 ePage 처럼 두번째 알파벳이 대문자인 경우
 	//    => setter, getter 는 setsPageNo , getsPageNo 형태로 만들어지기때문에
 	//       Lombok.. 등등 과 규칙이다르므로 사용시 불편 
@@ -40,7 +40,7 @@ public class PageMaker {
 	
 	// ** 필요값 set
 	// 1) Criteria
-	// public void setCri(Criteria cri) { -> ver01   
+	//public void setCri(Criteria cri) { //-> ver01   
 	public void setCri(SearchCriteria cri) { //ver02	
 		this.cri=cri;
 	}
@@ -68,9 +68,13 @@ public class PageMaker {
 		//    		         ceil -> 천장, 예) 11/3=3.666..  -> 4
 		// => Math.ceil(12.345) => 13.0
 		epageNo = (int)Math.ceil(cri.getCurrPage()/(double)displayPageNo) * displayPageNo;
+				// => 요청받은 pageNo 11 인 경우 -> (int)Math.ceil(11/3) * 3 = 4*3 = 12
 		spageNo = (epageNo-displayPageNo) + 1; 
+				// => 12-3 + 1 = 10 결론은 11은 10, 11, 12 그룹에 속함
 		
-		// 3.2) lastPageNo, epageNo 확인 
+		// 3.2) lastPageNo, epageNo 확인
+		// => 사과 13개 를 1box에 3개씩 담으려면 필요한 box는 
+		//    13/3 = 4.3333 즉 box 는 4+1=5 개 필요. 이것을 계산해주는 메서드가 Math.ceil() 임.
 		lastPageNo =(int)Math.ceil(totalRowsCount/(double)cri.getRowsPerPage());
 		if ( lastPageNo<epageNo ) epageNo=lastPageNo;
 		
