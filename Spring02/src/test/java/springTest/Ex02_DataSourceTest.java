@@ -30,7 +30,7 @@ public class Ex02_DataSourceTest {
 	// => DataSource (interface)
 	//      -> AbstractDataSource
 	//      -> AbstractDriverBasedDataSource
-	//      -> DriverManagerDataSource 
+	//      -> DriverManagerDataSource
 	//          org.springframework.jdbc.datasource.DriverManagerDataSource
 	@Autowired
 	MemberDTO dto;
