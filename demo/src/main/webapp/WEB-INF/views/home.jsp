@@ -42,6 +42,7 @@
 &nbsp;<a href="board/boardList">bList</a>&nbsp; 
 &nbsp;<a href="board/bcriList">bcriList</a>&nbsp;
 &nbsp;<a href="jo/joList">jList</a><br>
+&nbsp;<a href="/axtestform">AjaxTest</a>&nbsp; 
 
 </body>
 </html>
