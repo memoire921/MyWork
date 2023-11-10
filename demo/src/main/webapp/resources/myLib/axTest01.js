@@ -1,3 +1,5 @@
+"use strict"
+
 // Ajax_REST API Test
 
 // 1) rsLogin
@@ -14,9 +16,10 @@ function rsLoginf(){
          <td bgcolor="Aqua"><label for="password">Password</label></td>
          <td><input type="password" id="password" name="password"></td>
       </tr>
-      <tr height="40"><td></td>
-         <td><span class="textlink" onclick="rsLogin()" style="cursor:pointer;">rsLogin</span>&nbsp;&nbsp;
+      <tr height="40">
+         <td colspan=2><span class="textlink" onclick="rsLogin()" style="cursor:pointer;">rsLogin</span>&nbsp;&nbsp;
          	<span class="textlink" onclick="rsLoginJJ()" style="cursor:pointer;">rsLoginJJ</span>&nbsp;&nbsp;
+         	<span class="textlink" onclick="axiLoginJJ()" style="cursor:pointer;">axiLoginJJ</span>&nbsp;&nbsp;
          <input type="reset" value="취소"></td>
       </tr>
    </table>
@@ -29,6 +32,7 @@ function rsLoginf(){
 // 1.2) Login 기능 Service 요청처리
 // => Ajax 요청, fetch 적용
 // => @RestController, 계층적 uri 적용, Post 요청
+// => request: JSON, response: Text
 
 function rsLogin() {
 	let url = "/rest/rslogin";
@@ -45,6 +49,7 @@ function rsLogin() {
 	      // ** then 1 단계
       	  // => status 확인 -> Error catch 블럭으로 또는 Response Body-reading Data return
       	  // => Response Body의 Data-reading & return.
+      	  
 	if(!response.ok) throw new Error(response.status);
 	  // => Error 임을 인지시켜 catch 블럭으로 
       //   - fetch는 네트워크 장애가 발생한 경우에만 promise를 거부(reject -> catch 블럭으로) 하므로,
@@ -84,7 +89,7 @@ function rsLoginJJ() {
 		// => 서버에서 JSON 형식으로 보냈으므로 json() 메서드 사용
 		//    서버에서 UserDTO 를 사용했으므로 사용시에 멤버변수명 주위 (id, username)
 	}).then(responseData => {
-		alert(`responseData => id=${responseData.id}, name=${responseData.username}`);   
+		alert(`**responseData => id=${responseData.id}, name=${responseData.username}`);   
 	    location.reload();
 	}).catch(err => {
         console.error(`Error => ${err.message}`);
@@ -92,3 +97,62 @@ function rsLoginJJ() {
         else alert('시스템 오류, 잠시후 다시하세요~~');
     });
 } // rsLoginJJ
+
+/// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 2. Axios Login
+// => 라이브러리 추가 (CDN 으로..   axTest01.js 에)
+// => 서버요청은 위 "1.3) rsLoginJJ" 과 동일하게 rsloginjj 
+// => JSON <-> JSON
+// => Request
+//   - data  : JSON Type 기본 (fetch 처럼 JSON.stringify 필요없음) 
+//   - header: {'Content-Type': 'application/json'}  
+// => Response
+//   - then : 응답 Data는 매개변수.data 로 접근가능, JSON Type 기본 (1단계로 모두 받음: fetch 와 차이점))   
+//   - catch
+//     . axios는 상태코드가 2xx의 범위를 넘어가면 거부(reject) 되어 catch절로 분기함 
+//       이때 catch 절의 매개변수는 response 속성으로 error 내용 전체를 객체형태로 전달받음   
+//     . error.response : error 내용 전체를 객체형태로 전달받음
+//     . error.response.status : status 확인가능   
+//     . error.message : 브라우져의 Error_Message, "Request failed with status code 415
+
+function axiLoginJJ() {
+	let url = "/rest/rsloginjj"; // rsloginjj111 -> 404 발생 Test
+	
+	axios({ url: url,
+			method: 'Post', 
+			headers: {'Content-Type': 'application/json'},
+			data: { id: document.getElementById('id').value,
+					password: document.getElementById('password').value
+			}
+	}).then( response => { 
+			alert(`** response.data : ${response.data}`);
+			alert(`** response : id = ${response.data.id}, name = ${response.data.usename}`);
+			location.reload();
+	}).catch(err => { 
+			console.error(`** err.response = ${err.response}, 
+							err.response.status = ${err.response.status}, 
+							err.message = ${err.message}`);
+			if ( err.response.status == '502' ) alert("id 또는 password 오류, 다시하세요~");
+			else alert("~~ 시스템 오류, 잠시후 다시하세요 => "+err.message);			
+	});
+	
+} //axiLoginJJ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

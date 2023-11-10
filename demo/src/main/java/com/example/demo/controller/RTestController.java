@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.JoDTO;
 import com.example.demo.domain.MemberDTO;
@@ -122,7 +123,7 @@ public class RTestController {
 	JoService jservice;
 	
 	@GetMapping("/hello")
-	// => 메뉴없이 직접 요청: http://localhost:8088/rest/hello
+	// => 메뉴없이 직접 요청: http://localhost:8080/rest/hello
 	public String hello() {
 		log.info("** Rest API Test 중 **");
 		return "~~~ Hello Spring Boot Rest API Test !!! ~~~"; 
@@ -130,7 +131,7 @@ public class RTestController {
 	
 	// ** RestController 의 다양한 Return Type
 	// 1) Text Return
-	// => http://localhost:8088/rest/gettext
+	// => http://localhost:8080/rest/gettext
 	//@GetMapping(value="/gettext", produces="text/plain; charset=UTF-8")
 	@GetMapping(value="/gettext")
 	// => produces 속성
@@ -146,7 +147,7 @@ public class RTestController {
 	// => Java 의 객체를 UI 가 인식가능한 형태의 객체로 변환후 전송
 	// => xml 또는 JSON 포맷
 	// => 즉, Java <-> JSON 변환을 지원하는 API 필요함
-	//    여기부터는 pom 에 dependency 추가 해야함   
+	//    여기부터는 pom 에 dependency 추가 해야함
 	
 	// 2) 사용자 정의 객체 
 	// 2.1) 객체 Return1. : produces 지정한 경우
@@ -205,6 +206,10 @@ public class RTestController {
 	// 2) @RequestParam 으로 처리
 	//	- @RequestParam("jno") int jno -> Spring02의 MemberController, /dnload 참고
 	// => params 와 @RequestParam  비교 해보세요.	
+	//    parameter 오류시 400
+	//      - params : Parameter conditions "jno, id" not met for actual request parameters: jno2={11}, id={banana}
+    //      - @RequestParam : Required request parameter 'jno' for method parameter type int is not present
+	//    ( Mapper interface의 @Param 과는 구별 )
 	
 	// 3) @PathVariable
 	// 4) @RequestBody
@@ -219,9 +224,9 @@ public class RTestController {
 	// => 실습
 	//	  전달된 jno값의 조건에 의하여 502(BAD_GATEWAY) 또는 200(OK) 상태코드와 데이터를 함께 전송하므로 
 	//    요청 User가 이 응답결과(body값)의 정상/비정상 여부를 알수있도록 해준다
-	// => 200 Test: http://localhost:8088/rest/incheck?jno=11&id=banana
-	//				http://localhost:8088/rest/incheck.json?jno=11&id=banana
-	// => 502 Test: http://localhost:8088/rest/incheck?jno=5&id=banana
+	// => 200 Test: http://localhost:8080/rest/incheck?jno=11&id=banana
+	//				http://localhost:8080/rest/incheck.json?jno=11&id=banana
+	// => 502 Test: http://localhost:8080/rest/incheck?jno=5&id=banana
 	
 	@GetMapping(value="/incheck", params={"jno", "id"})
 	public ResponseEntity<JoDTO> incheck (int jno, String id) {
@@ -243,9 +248,36 @@ public class RTestController {
 		return result;
 	}
 	
+	@GetMapping(value="/incheck2")
+	// => http://localhost:8080/rest/incheck2?jno=7&id=banana
+	//public ResponseEntity<JoDTO> incheck2 (@RequestParam("jno") int jno, 
+	//										@RequestParam("id") String id) {
+	// => @RequestParam 은 생략가능
+	//    단, 이 경우에는 Parameter 가 없으면 null 로 통과
+	//    그러므로 매핑을 엄격하게 하기 위해 @RequestParam, params 등을 사용함
+	public ResponseEntity<?> incheck2 (int jno, String id) {
+		// 1) 준비
+		ResponseEntity<?> result = null;
+		MemberDTO dto = service.selectOneJno(id, jno);
+		
+		// 2) Service 처리
+		// => jno 의 값이 11~20 에 속하면 성공/ 아니면 오류 
+		if ( dto != null ) {
+			// 성공
+			result = ResponseEntity.status(HttpStatus.OK).body(dto);
+			log.info("** incheck2 Test HttpStatus.OK => "+HttpStatus.OK);
+		}else {
+			// 실패
+			result = ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("자료검색 오류");
+			log.info("** incheck2 Test HttpStatus.BAD_GATEWAY => "+HttpStatus.BAD_GATEWAY);
+		}
+		return result;
+	}
+	
+	
 	// 5) @PathVariable
 	// => URL 경로의 일부를 파라미터로 사용할때 이용
-	//    http://localhost:8088/rest/order/outer/노랑
+	//    http://localhost:8080/rest/order/outer/노랑
 	// => 요청 URI 매핑에서 템플릿 변수를 설정하고 이를 매핑메서드 매개변수의 값으로 할당 시켜줌.
 	//    이때 파라미터가 1개이면 @PathVariable 과 같이 name을 생략할수 있다 
 	@GetMapping("/order/{test1}/{test2}")
@@ -257,7 +289,7 @@ public class RTestController {
 	
 	// 6) @RequestBody
 	// => JSON 형식으로 전달된 Data를 컨트롤러에서 사용자정의 객체(DTO) _Java객체 로 변환할때 사용 
-	// => 요청 url : http://localhost:8088/rest/convert
+	// => 요청 url : http://localhost:8080/rest/convert
 	// => Payload : {"jno":33, "jname":"삼삼오오", "id":"victory", "project":"RequestBody Test 중"}
 	@PostMapping("/convert")
 	public ResponseEntity<?> convert (@RequestBody JoDTO dto) {
@@ -342,5 +374,49 @@ public class RTestController {
 		return result;
 	}
 	
+	// 3) Join
+	// => image 포함, "multipart/form-data" Type 으로 요청
+	// => consumes, produces 설정
+	@PostMapping(value = "/rsjoin",
+			consumes=MediaType.MULTIPART_FORM_DATA_VALUE, //multipart/form-data 와 동일
+			produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<?> rsjoin(MemberDTO dto) throws Exception {
+		
+		ResponseEntity<?> result = null;
+		
+		// ** Join Service
+		// => PasswordEncoder (암호화 적용)
+		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+	      
+		// => MultipartFile  
+		String realPath =  "C:\\Users\\leejk\\Desktop\\leejk\\MTest\\MyWork\\demo\\src\\main\\webapp\\resources\\uploadImages\\";
+		String file1, file2="resources/uploadImages/basicman4.png";
 
+		MultipartFile uploadfilef = dto.getUploadfilef();
+		if ( uploadfilef!=null && !uploadfilef.isEmpty() ) {
+	         
+			// =>  물리적위치 저장 (file1)
+			file1 = realPath + uploadfilef.getOriginalFilename(); //저장경로 완성 
+			uploadfilef.transferTo(new File(file1)); //해당경로에 저장(붙여넣기)
+	         
+			// => 저장경로 완성 (file2)
+			file2 = "resources/uploadImages/" + uploadfilef.getOriginalFilename();
+		} // Image 선택한 경우
+	      
+		// => 완성된 경로를 dto 에 set
+		dto.setUploadfile(file2);
+	      
+		// => Service 처리
+		if ( service.insert(dto) > 0 ) {
+			result = ResponseEntity.status(HttpStatus.OK).body("~~ 회원가입 성공!! 로그인후 이용하세요 ~~");
+			log.info("** rsjoin HttpStatus.OK => "+HttpStatus.OK);
+		}else {
+			result = ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("~~ 회원가입 실패!! 다시 하세요 ~~");
+			log.info("** rsjoin HttpStatus.BAD_GATEWAY => "+HttpStatus.BAD_GATEWAY);
+		}
+		return result;
+	} //rsjoin
+	
 } //class
+
+

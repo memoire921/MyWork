@@ -12,6 +12,12 @@ import mapperInterface.MemberMapper;
 @Service
 public class MemberServiceImpl implements MemberService {
 	
+	// ** RTestController incheck2 Test
+	@Override
+	public MemberDTO selectOneJno(String id, Integer jno) {
+		return mapper.selectOneJno(id, jno);
+	}
+	
 	// ** 전역변수 정의
 	@Autowired
 	MemberMapper mapper;
