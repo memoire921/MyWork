@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="pass"/>
+		<item key="selection" value="memberList"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="memberList"/>
+			<item value="multi"/>
+			<item value="8088"/>
+			<item value="&#x09;&#x09;"/>
 			<item value="pass"/>
 			<item value="rsLoginf"/>
 			<item value="ok"/>
@@ -19,10 +23,6 @@
 			<item value="T"/>
 			<item value="pCheck()"/>
 			<item value="preventDefault"/>
-			<item value="uploadfile"/>
-			<item value="재시도 유도"/>
-			<item value="dto"/>
-			<item value="log"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -284,7 +284,7 @@ function inCheck() {
 	// => type="file" 은 복수개의 파일을 업로드할수 있도록 설계됨
 	//    그러므로 files[] 배열 형태의 속성을 가짐
 	
-	window.document.getElementById('uploadfilef').onchange=function(e){
+	document.getElementById('uploadfilef').onchange=function(e){
 	//$('#uploadfilef').change(function(){
 	// => window.jquery('#uploadfilef').~.~.~
 	//    - JS 에서 window 객체는 생략 가능
@@ -307,7 +307,8 @@ function inCheck() {
 		<td><input type="submit" id="submitTag" value="가입" onclick="return inCheck()" disabled>
 			&nbsp;&nbsp;
 			<input type="reset" value="취소">&nbsp;&nbsp;
-			<span class="textlink" onclick="rsJoin()">rsJoin</span>
+			<span class="textlink" onclick="rsJoin()">rsJoin</span>&nbsp;&nbsp;
+			<span class="textlink" onclick="axiJoin()">axiJoin</span>
 		</td>
 	</tr>					
 </table>
