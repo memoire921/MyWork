@@ -6,6 +6,7 @@
 // => Request: jQuery Ajax, MemberController 의 memberJoin 활용
 // => Response: Page 
 // => window.jQuery 객체 -> 줄여서 window 는 생략하고 $ 기호로 표현
+
 function rsJoinf() {
 
 	let url = "/member/memberJoin";
@@ -106,6 +107,7 @@ function axiMList() {
 // => delete
 // => delete 요청: 경로에 Request_Data를 연결
 //    /rest/axidelete/banana
+
 function axiDelete(id) {
 	let url = "/rest/axidelete/"+id;
 	axios.delete(url).then(response => {
