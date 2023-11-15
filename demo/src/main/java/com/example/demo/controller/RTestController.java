@@ -450,4 +450,26 @@ public ResponseEntity<?> axidelete( @PathVariable("ii") String id, MemberDTO dto
 		return result;
 	} //idblist
 	
+	// ** jodetail
+	@GetMapping(value = "/jodetail", params= {"jno"})
+	// => params로 정의한 "jno"가 요청 Parameter에 반드시 존재해야함.
+	public ResponseEntity<?> jodetail(JoDTO dto) {
+		
+		// => dto 확인: parameter 와 같은 이름의 멤버변수가 있으면 자동으로 set
+		System.out.println("** jodetail dto => "+dto);
+		ResponseEntity<?> result = null;
+		
+	// => Service 처리
+	dto = jservice.selectOne(dto);
+	// => 출력 Data 유/무 구별
+	if ( dto != null ) {
+		result = ResponseEntity.status(HttpStatus.OK).body(dto);
+		log.info("** jodetail HttpStatus.OK => "+HttpStatus.OK);
+	} else {
+		result = ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("~~ 출력할 조의 자료가 없습니다. ~~");
+		log.info("** jodetail HttpStatus.BAD_GATEWAY => "+HttpStatus.BAD_GATEWAY);  //502
+	}
+	return result;
+	} //jodetail
+	
 } //class

@@ -28,9 +28,16 @@
 	<c:if test="${not empty requestScope.banana}">
 		<c:forEach var="s" items="${requestScope.banana}">
 		<tr><td><span class="textlink" onclick="idbList('${s.id}')">${s.id}</span></td>
-			<td>${s.name}</td><td>${s.age}</td><td>${s.jno}</td>
+			<td>${s.name}</td><td>${s.age}</td>
+			<td align="center">
+				<span class="textlink" onmouseover="showJoDetail(event,${s.jno})" 
+										onmouseout="hideJoDetail()">${s.jno}</span></td>
+            <!--       ** function 에 이벤트객체 전달
+                       => 이벤트핸들러의 첫번째 매개변수에 event 라는 이름으로 전달함.
+                       => a Tag 와 span 사용시 e.target 값 비교
+                           -> a Tag : "javascript:;" 
+                           -> span  : [object HTMLSpanElement]   -->
 			<td>${s.info}</td><td>${s.point}</td><td>${s.birthday}</td><td>${s.rid}</td>
-			
 			<!-- Image 추가 -->
 			<td><img alt="MyImage" src="/${s.uploadfile}" width="50" height="70"></td>
 			
@@ -58,6 +65,7 @@
 		</tr>
 	</c:if>
 </table>
+<div id="content"></div>
 <hr>
 &nbsp;<a href="/home">Home</a>&nbsp;
 </body>

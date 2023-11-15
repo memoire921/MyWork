@@ -39,9 +39,9 @@ a:active { color:Blue; }
 	position:absolute;
 	z-index:100;
 	width:300px;
-	height:70px; 
-	color: SaddleBrown;
-	background: Beige;
+	height:130px; 
+	color: DarkSlateGray;
+	background: Ivory;
 }
 /*  Check  List searchBar */
 #searchBar {
