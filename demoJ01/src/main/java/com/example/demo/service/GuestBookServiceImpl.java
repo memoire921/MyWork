@@ -42,10 +42,9 @@ public class GuestBookServiceImpl implements GuestBookService {
     @Override
     public Long register(GuestBookDTO dto) {
 
-        log.info("DTO------------------------");
-        log.info(dto);
+        log.info("** DTO => "+dto);
         GuestBook entity = dtoToEntity(dto);
-        log.info(entity);
+        log.info("** entity =>"+entity);
 
         repository.save(entity); // 저장 또는 수정
         return entity.getGno();  // 저장후 gno return
@@ -63,7 +62,7 @@ public class GuestBookServiceImpl implements GuestBookService {
     	// => Java8부터 Optional<T>클래스를 사용해 NullPointerException(이하 NPE)를 방지할수 있도록 지원.
     	//	  즉, Optional<T>는 null이 올수 있는 값을 감싸는 Wrapper클래스로, 참조하더라도 NPE가 발생하지 않도록 도와줌.
     	//	  제공되는 메소드로 복잡한 조건문 없이 NPE를 회피할 수 있어록 해줌
-    	// => sPresent() : Optional객체에 저장된 값이 null인지 확인
+    	// => isPresent() : Optional객체에 저장된 값이 null인지 확인
     	// => get() : Optional객체에 저장된 값 제공
     	// => 참고 https://esoongan.tistory.com/95
     	
