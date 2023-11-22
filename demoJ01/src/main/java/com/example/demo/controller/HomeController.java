@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.domain.GuestBookDTO;
+import com.example.demo.domain.PageRequestDTO;
+import com.example.demo.domain.PageResultDTO;
 import com.example.demo.entity.GuestBook;
 import com.example.demo.service.GuestBookService;
 
@@ -31,6 +33,29 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 	} //home
 	
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ** JPA Paging & Sorting
+	@GetMapping("/gpagelist")
+    public String gpagelist() {
+		// 1) request 준비
+		PageRequestDTO requestDTO = PageRequestDTO.builder()
+				.page(1).size(5).build();
+		// => 출력할 pageNo, Page당 출력할 row갯수 입력
+		
+		// 2) Service 처리
+		PageResultDTO<GuestBookDTO, GuestBook> resultDTO = 
+				service.gPageList(requestDTO);
+		
+		// 3) view(Response) 처리
+        for ( GuestBookDTO g:resultDTO.getDtoList() ) {
+           System.out.println(g+", regDate:"+g.getRegDate()
+           						+", modDate:"+g.getModDate());
+        }
+      
+       return "redirect:home" ;
+    } //gpagelist
+	
+	
     @GetMapping("/ginsert")
     public String ginsert() {
       
@@ -44,6 +69,7 @@ public class HomeController {
        return "redirect:home" ;
     }
    
+    
     @GetMapping("/guestlist")
     public String guestlist() {
       

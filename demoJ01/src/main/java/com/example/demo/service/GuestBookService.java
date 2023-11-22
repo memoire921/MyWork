@@ -3,10 +3,15 @@ package com.example.demo.service;
 import java.util.List;
 
 import com.example.demo.domain.GuestBookDTO;
+import com.example.demo.domain.PageRequestDTO;
+import com.example.demo.domain.PageResultDTO;
 import com.example.demo.entity.GuestBook;
 
 public interface GuestBookService {
 
+	// ** JPA Paging & Sorting
+	PageResultDTO<GuestBookDTO, GuestBook> gPageList(PageRequestDTO requestDTO);
+	
 	Long register(GuestBookDTO dto); // insert, update 모두사용
     List<GuestBook> selectList();
     GuestBook selectOne(Long gno);
